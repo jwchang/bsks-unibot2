@@ -1,5 +1,4 @@
 from typing import Set
-
 from backend.core import run_llm
 import streamlit as st
 from streamlit_chat import message
@@ -16,7 +15,8 @@ def create_sources_string(source_urls: Set[str]) -> str:
     return sources_string
 
 
-st.header("LangChain🦜🔗 Udemy Course- Helper Bot")
+st.header("BSKS - UNIBOT")
+
 if (
     "chat_answers_history" not in st.session_state
     and "user_prompt_history" not in st.session_state
