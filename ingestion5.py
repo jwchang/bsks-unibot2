@@ -1,5 +1,5 @@
+from langchain.document_loaders import PyMuPDFLoader
 import os
-
 from langchain.document_loaders import ReadTheDocsLoader, PyPDFDirectoryLoader
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -17,15 +17,19 @@ INDEX_NAME = "bsks-unibot2-index"
 
 def ingest_docs():
 
-    loader = PyPDFDirectoryLoader("./data/")
-    raw_documents = loader.load()
+    loader = PyMuPDFLoader("dataTemp/001.pdf")
+    data1= loader.load()
+    
+    loader = PyMuPDFLoader("dataTemp/002.pdf")
+    data2= loader.load()
 
-    print( raw_documents[0].page_content )
-    print("===============================================================")
-    print( raw_documents[1].page_content )
-    
+    loader = PyMuPDFLoader("dataTemp/003.pdf")
+    data3= loader.load()
+
+    raw_documents = data1 + data2 + data3
+
     print(f"loaded {len(raw_documents)} documents")
-    
+
     text_splitter = RecursiveCharacterTextSplitter( chunk_size=400, chunk_overlap=50 )
     documents    = text_splitter.split_documents(raw_documents)
     
@@ -36,6 +40,6 @@ def ingest_docs():
     #Pinecone.from_documents(documents, embeddings, index_name=INDEX_NAME)
     print("****Loading to vectorestore done ***")
 
-
+    
 if __name__ == "__main__":
     ingest_docs()

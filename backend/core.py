@@ -13,7 +13,7 @@ pinecone.init(
     environment=os.environ["PINECONE_ENVIRONMENT_REGION"],
 )
 
-INDEX_NAME = "bsks-unibot-index"
+INDEX_NAME = "bsks-unibot2-index"
 
 
 def run_llm(query: str, chat_history: List[Dict[str, Any]] = []):

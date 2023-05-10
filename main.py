@@ -15,7 +15,7 @@ def create_sources_string(source_urls: Set[str]) -> str:
     return sources_string
 
 
-st.header("BSKS - UNIBOT")
+st.header("BSKS - UNIBOT2")
 
 if (
     "chat_answers_history" not in st.session_state

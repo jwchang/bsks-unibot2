@@ -17,12 +17,14 @@ INDEX_NAME = "bsks-unibot2-index"
 
 def ingest_docs():
 
-    loader = PyPDFDirectoryLoader("./data/")
+    loader = PyPDFDirectoryLoader("./dataTemp2/")
     raw_documents = loader.load()
 
-    print( raw_documents[0].page_content )
+    #raw_documents = SimpleDirectoryReader('dataTemp').load_data()
+
+    print( raw_documents[0] )
     print("===============================================================")
-    print( raw_documents[1].page_content )
+    print( raw_documents[1] )
     
     print(f"loaded {len(raw_documents)} documents")
     
